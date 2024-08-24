@@ -8,13 +8,18 @@
 
 <title>@yield("title", "BikeShop | จําหน่ายอะไหล่จักรยานออนไลน์")</title>
 <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/toastr/toastr.min.js') }}">
+<link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/all.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
 </head>
 
 <body>
+    <nav class="navbar navbar-default navbar-static-top">
+        <center><strong><h1>Testing kub</h1></strong></center>
     <div class="container">
-        <nav class="navbar navbar-default navbar-static-top">
-        
         <div class="navbar-header">
         <a class="navbar-brand" href="#">BikeShop</a>
         </div>
@@ -26,8 +31,14 @@
         </ul>
         </div>
         
-        </nav>
     </div> @yield("content")
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+</nav>
+@if(session('msg'))
+@if(session('ok'))
+<script>toastr.success("{{ session('msg')}}")</script>
+@else
+<script>toastr.error("{{ session('msg')}}")</script>
+@endif
+@endif
 </body>
 </html>
